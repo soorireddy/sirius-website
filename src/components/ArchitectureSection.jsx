@@ -51,10 +51,10 @@ const layers = [
 function LayerCard({ layer, index }) {
   const { Icon, color, bg, border, label, sub, desc, nodes } = layer
   return (
-    <div className="relative flex gap-5">
+    <div className="relative flex gap-3 sm:gap-5 min-w-0">
       <div className="flex flex-col items-center">
         <div
-          className="w-10 h-10 rounded-xl flex-shrink-0 grid place-items-center"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex-shrink-0 grid place-items-center"
           style={{ background: bg, border: `1px solid ${border}` }}
         >
           <Icon size={18} style={{ color }} />
@@ -65,7 +65,7 @@ function LayerCard({ layer, index }) {
       </div>
       <div className="pb-8 flex-1 min-w-0">
         <div className="flex flex-wrap items-baseline gap-2 mb-1">
-          <span className="text-[15px] font-bold text-white">{label}</span>
+          <span className="text-[15px] font-bold text-white break-words">{label}</span>
           <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider">{sub}</span>
         </div>
         <p className="text-[13px] text-white/60 leading-relaxed mb-3">{desc}</p>
@@ -73,7 +73,7 @@ function LayerCard({ layer, index }) {
           {nodes.map((n) => (
             <span
               key={n}
-              className="inline-flex items-center h-6 px-2 rounded text-[10.5px] font-mono font-semibold"
+              className="inline-flex max-w-full items-center min-h-6 px-2 py-1 rounded text-[10.5px] font-mono font-semibold break-all"
               style={{ background: bg, color, border: `1px solid ${border}` }}
             >
               {n}
@@ -87,7 +87,7 @@ function LayerCard({ layer, index }) {
 
 export default function ArchitectureSection() {
   return (
-    <section id="architecture" className="relative bg-ink text-white py-24 overflow-hidden border-t border-white/[0.06]">
+    <section id="architecture" className="relative scroll-mt-20 bg-ink text-white py-20 sm:py-24 overflow-hidden border-t border-white/[0.06]">
       <div className="absolute inset-0 -z-10 bg-mesh-dark opacity-60" />
       <div
         className="absolute inset-0 -z-10 bg-grid-dark opacity-30"
@@ -99,27 +99,27 @@ export default function ArchitectureSection() {
       />
 
       <div className="container-wide">
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-16 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-12 lg:gap-16 items-start">
           {/* Left: copy */}
-          <Reveal className="lg:sticky lg:top-28">
-            <div className="eyebrow-dark inline-flex mb-6">
+          <Reveal className="min-w-0 lg:sticky lg:top-28">
+            <div className="eyebrow-dark inline-flex h-auto min-h-7 py-1 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
               Platform architecture
             </div>
 
-            <h2 className="font-display text-display-lg text-white mb-5">
+            <h2 className="font-display text-display-lg text-white mb-5 break-words">
               Four clean layers.<br />
               <span className="text-gradient">One governance spine.</span>
             </h2>
 
-            <p className="text-[16px] text-white/65 leading-relaxed mb-8 max-w-md">
+            <p className="text-[16px] text-white/65 leading-relaxed mb-8 max-w-md break-words">
               Every component in Sirius sits in a deliberate hierarchy.
               Workflows orchestrate Agents. Agents invoke Skills and Tools.
               Skills shape reasoning; Tools execute actions. Sirius AI GRC wraps the
               entire stack with policy, audit, and control.
             </p>
 
-            <div className="rounded-2xl border border-teal-500/25 bg-teal-500/[0.07] p-5">
+            <div className="rounded-2xl border border-teal-500/25 bg-teal-500/[0.07] p-4 sm:p-5">
               <div className="flex items-center gap-3 mb-3">
                 <span className="w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-500/30 grid place-items-center flex-shrink-0">
                   <ShieldCheck size={16} className="text-teal-400" />
@@ -146,12 +146,12 @@ export default function ArchitectureSection() {
           </Reveal>
 
           {/* Right: architecture diagram */}
-          <Reveal delay={200}>
-            <div className="relative rounded-2xl border border-teal-500/30 bg-teal-500/[0.03] p-4 sm:p-6">
+          <Reveal delay={200} className="min-w-0">
+            <div className="relative rounded-2xl border border-teal-500/30 bg-teal-500/[0.03] p-3 sm:p-6">
               {/* AEGIS label */}
-              <div className="absolute -top-3.5 left-6 flex items-center gap-2 px-3 py-1 rounded-full bg-ink border border-teal-500/40 text-[10.5px] font-bold text-teal-400 uppercase tracking-widest">
+              <div className="absolute -top-3.5 left-3 sm:left-6 max-w-[calc(100%-1.5rem)] flex items-center gap-2 px-3 py-1 rounded-full bg-ink border border-teal-500/40 text-[10.5px] font-bold text-teal-400 uppercase tracking-widest">
                 <ShieldCheck size={10} />
-                Sirius AI GRC · Governed runtime
+                <span className="min-w-0 truncate">Sirius AI GRC · Governed runtime</span>
               </div>
 
               {/* Runtime status bar */}
@@ -168,9 +168,9 @@ export default function ArchitectureSection() {
               </div>
 
               {/* SVG flow diagram */}
-              <div className="mb-5 rounded-xl border border-white/10 bg-black/30 p-4 overflow-x-auto">
+              <div className="mb-5 rounded-xl border border-white/10 bg-black/30 p-3 sm:p-4 overflow-hidden">
                 <div className="text-[10.5px] font-mono text-white/40 uppercase tracking-wider mb-3">Active flow · loan-application v3.2</div>
-                <svg viewBox="0 0 480 80" className="w-full min-w-[320px]" style={{ height: 80 }}>
+                <svg viewBox="0 0 480 80" className="w-full min-w-0" style={{ height: 80 }}>
                   <defs>
                     <linearGradient id="arch-edge" x1="0" y1="0" x2="1" y2="0">
                       <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.8" />
@@ -209,7 +209,7 @@ export default function ArchitectureSection() {
               </div>
 
               {/* Layer stack */}
-              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+              <div className="rounded-xl border border-white/10 bg-black/20 p-3 sm:p-4">
                 {layers.map((layer, i) => (
                   <LayerCard key={layer.id} layer={layer} index={i} />
                 ))}
