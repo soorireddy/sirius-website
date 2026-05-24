@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
+export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div', id }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -22,6 +22,7 @@ export default function Reveal({ children, className = '', delay = 0, as: Tag = 
   return (
     <Tag
       ref={ref}
+      id={id}
       className={`reveal ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >

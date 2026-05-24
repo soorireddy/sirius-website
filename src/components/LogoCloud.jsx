@@ -53,12 +53,6 @@ export default function LogoCloud() {
           </Mark>
         </Reveal>
 
-        <Reveal delay={250} className="mt-10 text-center">
-          <a href="#integrations" className="text-[12.5px] font-semibold text-white/60 hover:text-white inline-flex items-center gap-1.5">
-            View all 50+ connectors
-            <span aria-hidden>→</span>
-          </a>
-        </Reveal>
       </div>
     </section>
   )

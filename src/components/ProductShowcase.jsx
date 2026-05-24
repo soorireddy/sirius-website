@@ -165,10 +165,10 @@ export default function ProductShowcase() {
               ))}
             </ul>
             <div className="mt-9 flex items-center gap-3">
-              <a href={`#${current.id}-details`} className="btn btn-primary">
+              <a href={`/products#${current.id === 'aegis' ? 'ai-grc' : current.id === 'studio' ? 'ai-studio' : current.id === 'builder' ? 'flow-builder' : current.id === 'integration' ? 'integration-studio' : 'platform-api'}`} className="btn btn-primary">
                 Explore {current.label} <ArrowRight size={15} />
               </a>
-              <a href="#docs" className="btn btn-secondary">Read the docs</a>
+              <a href="/docs" className="btn btn-secondary">Read the docs</a>
             </div>
           </div>
 
