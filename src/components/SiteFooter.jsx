@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { ArrowRight, ShieldCheck, Github, Twitter, Linkedin, CheckCircle } from 'lucide-react'
 import { useDemo } from '../context/DemoModalContext'
 import ContactModal from './ContactModal'
+import AboutModal from './AboutModal'
+import LegalModal from './LegalModal'
 
 const nav = [
   {
@@ -39,7 +41,7 @@ const nav = [
   {
     heading: 'Company',
     links: [
-      { label: 'About Sudheeksha', href: 'mailto:enterprise@sudheeksha.co.in' },
+      { label: 'About Sudheeksha', action: 'about' },
       { label: 'Book a Demo',      action: 'demo' },
       { label: 'Customers',        href: '/#customers' },
       { label: 'Pricing',          href: '/#pricing' },
@@ -53,6 +55,8 @@ const compliance = ['SOC 2 Type II', 'ISO 27001', 'HIPAA-ready', 'EU AI Act', 'G
 export default function SiteFooter() {
   const { openDemo } = useDemo()
   const [contactOpen, setContactOpen] = useState(false)
+  const [aboutOpen,   setAboutOpen]   = useState(false)
+  const [legalType,   setLegalType]   = useState(null) // 'privacy' | 'terms' | 'security'
 
   // Newsletter form state
   const [email, setEmail]       = useState('')
@@ -77,6 +81,17 @@ export default function SiteFooter() {
   }
 
   const renderLink = (link) => {
+    if (link.action === 'about') {
+      return (
+        <button
+          key={link.label}
+          onClick={() => setAboutOpen(true)}
+          className="text-[13px] text-white/55 hover:text-white transition-colors text-left"
+        >
+          {link.label}
+        </button>
+      )
+    }
     if (link.action === 'demo') {
       return (
         <button
@@ -234,16 +249,18 @@ export default function SiteFooter() {
 
             {/* Legal */}
             <div className="flex items-center gap-4 text-[11.5px] text-white/35">
-              <span>© 2026 Sudheeksha Inc.</span>
-              <a href="#privacy"   className="hover:text-white/70 transition-colors">Privacy</a>
-              <a href="#terms"     className="hover:text-white/70 transition-colors">Terms</a>
-              <a href="#security"  className="hover:text-white/70 transition-colors">Security</a>
+              <span>© 2026 Sudheeksha Software Solutions Pvt. Ltd.</span>
+              <button onClick={() => setLegalType('privacy')}  className="hover:text-white/70 transition-colors">Privacy</button>
+              <button onClick={() => setLegalType('terms')}    className="hover:text-white/70 transition-colors">Terms</button>
+              <button onClick={() => setLegalType('security')} className="hover:text-white/70 transition-colors">Security</button>
             </div>
           </div>
         </div>
       </footer>
 
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
+      <AboutModal   open={aboutOpen}   onClose={() => setAboutOpen(false)} />
+      <LegalModal   type={legalType}   onClose={() => setLegalType(null)} />
     </>
   )
 }
