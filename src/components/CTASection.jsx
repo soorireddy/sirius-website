@@ -11,14 +11,14 @@ export default function CTASection() {
 
   return (
     <>
-      <section id="demo" className="relative bg-ink text-white py-28 overflow-hidden">
+      <section id="demo" className="relative bg-ink text-white py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-mesh-dark" />
         <NetworkCanvas className="absolute inset-0 -z-10 w-full h-full opacity-25" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-teal-950/20 to-transparent" />
 
         <div className="container-wide">
           <Reveal className="max-w-2xl mx-auto text-center">
-            <div className="eyebrow-dark inline-flex mb-6">
+            <div className="eyebrow-dark inline-flex h-auto min-h-7 py-1 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse-soft" />
               Sirius AI GRC · GA Q3 2026 · Limited early access
             </div>

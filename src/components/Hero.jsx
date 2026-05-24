@@ -5,7 +5,7 @@ import { useDemo } from '../context/DemoModalContext'
 export default function Hero() {
   const { openDemo } = useDemo()
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-white pt-28 lg:pt-36 pb-24">
+    <section className="relative isolate overflow-hidden bg-ink text-white pt-24 sm:pt-28 lg:pt-36 pb-16 sm:pb-24">
       {/* Mesh + grid background */}
       <div className="absolute inset-0 -z-10 bg-mesh-dark" />
       <div className="absolute inset-0 -z-10 bg-grid-dark opacity-60" style={{maskImage:'radial-gradient(ellipse 60% 60% at 50% 30%, black, transparent 80%)', WebkitMaskImage:'radial-gradient(ellipse 60% 60% at 50% 30%, black, transparent 80%)'}} />
@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-12 lg:gap-16 items-center">
           {/* Left — copy */}
           <div>
-            <div className="eyebrow-dark inline-flex">
+            <div className="eyebrow-dark inline-flex h-auto min-h-7 py-1 text-left">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse-soft" />
               Sirius AI GRC · Enterprise Governance, GA Q3 2026
             </div>
@@ -34,7 +34,7 @@ export default function Hero() {
               teams can deploy autonomous AI without losing the audit trail.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3">
               <button onClick={openDemo} className="btn h-12 px-5 bg-white text-ink hover:bg-white/90 shadow-elevated">
                 Book a 30-min demo <ArrowRight size={16} />
               </button>
@@ -58,7 +58,7 @@ export default function Hero() {
           </div>
 
           {/* Right — console mockup */}
-          <div className="relative">
+          <div className="relative min-w-0">
             {/* Floating accent badges */}
             <div className="absolute -top-4 -left-6 z-20 rounded-xl bg-ink-800/90 backdrop-blur-xl border border-white/10 p-3 shadow-elevated hidden sm:flex items-center gap-2.5 animate-float">
               <span className="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/25 grid place-items-center">
@@ -87,14 +87,14 @@ export default function Hero() {
                 <span className="window-dot bg-red-400/80" />
                 <span className="window-dot bg-amber-400/80" />
                 <span className="window-dot bg-emerald-400/80" />
-                <div className="ml-3 text-[11px] font-mono text-white/55">control-tower / runtime-inspector</div>
+                <div className="ml-3 min-w-0 truncate text-[11px] font-mono text-white/55">control-tower / runtime-inspector</div>
                 <div className="ml-auto flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-soft" />
                   <span className="text-[10.5px] font-semibold text-white/65 uppercase tracking-wider">Live</span>
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-[150px_1fr] min-h-[380px] sm:min-h-[440px]">
+              <div className="grid sm:grid-cols-[150px_1fr] min-h-[340px] sm:min-h-[440px]">
                 {/* Sidebar */}
                 <aside className="hidden sm:block border-r border-white/8 bg-black/20 p-2.5 space-y-0.5">
                   {[
@@ -117,7 +117,7 @@ export default function Hero() {
                 </aside>
 
                 {/* Main */}
-                <div className="p-4 space-y-3 bg-grid-dark bg-[length:32px_32px]">
+                <div className="p-3 sm:p-4 space-y-3 bg-grid-dark bg-[length:32px_32px] min-w-0">
                   {/* Top metrics strip */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {[
@@ -138,10 +138,10 @@ export default function Hero() {
 
                   {/* Flow diagram */}
                   <div className="rounded-lg border border-white/10 bg-black/30 p-3">
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                      <div className="flex min-w-0 items-center gap-2">
                         <GitBranch size={12} className="text-violet-400" />
-                        <span className="text-[11px] font-semibold text-white/85">flow / loan-application</span>
+                        <span className="text-[11px] font-semibold text-white/85 truncate">flow / loan-application</span>
                       </div>
                       <span className="text-[9.5px] font-mono text-white/45">v3.2 · running</span>
                     </div>
@@ -186,7 +186,7 @@ export default function Hero() {
                         { t: '2.1s', tag: 'GATE',   text: 'HITL required — reviewer.assigned("ops-2")', cls: 'bg-amber-500/15 !text-amber-400 border-amber-500/25' },
                         { t: '3.6s', tag: 'AUDIT',  text: 'evidence pack written — sha 8f3a…', cls: 'bg-violet-500/15 !text-violet-400 border-violet-500/25' },
                       ].map((e) => (
-                        <li key={e.text} className="px-3 py-2 flex items-center gap-3 text-[11.5px]">
+                        <li key={e.text} className="px-3 py-2 flex items-center gap-2 sm:gap-3 text-[11.5px]">
                           <span className="font-mono text-white/40 w-9">{e.t}</span>
                           <span className={`mono-label px-1.5 py-0.5 rounded border ${e.cls}`}>{e.tag}</span>
                           <span className="text-white/80 truncate">{e.text}</span>

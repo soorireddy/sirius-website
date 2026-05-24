@@ -38,7 +38,7 @@ export default function Navigation() {
   // Close mobile menu on route change
   useEffect(() => { setOpen(false) }, [location.pathname])
 
-  const opaque = scrolled || !isHome
+  const opaque = scrolled || !isHome || open
 
   return (
     <header
@@ -181,7 +181,7 @@ export default function Navigation() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="lg:hidden pb-6 pt-2 border-t border-white/10 mt-px">
+          <div className="lg:hidden -mx-4 sm:-mx-8 px-4 sm:px-8 pb-6 pt-3 border-t border-white/10 mt-px max-h-[calc(100vh-4rem)] overflow-y-auto bg-ink/95 shadow-elevated">
             <div className="grid gap-0.5">
               {navLinks.map((l) =>
                 l.isPage ? (

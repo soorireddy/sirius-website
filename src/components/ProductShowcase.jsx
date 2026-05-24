@@ -111,9 +111,9 @@ export default function ProductShowcase() {
 
         {/* Tab rail */}
         <div className="relative">
-          <div className="overflow-x-auto -mx-6 px-6 pb-1 lg:overflow-visible">
-            <div role="tablist" className="inline-flex lg:flex gap-2 min-w-max lg:min-w-0">
-              {products.map((p) => {
+          <div className="-mx-4 px-4 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
+            <div role="tablist" className="grid grid-cols-2 min-[560px]:grid-cols-3 lg:flex gap-2 lg:min-w-0">
+              {products.map((p, index) => {
                 const isActive = p.id === active
                 const pa = accentMap[p.accent]
                 return (
@@ -122,7 +122,9 @@ export default function ProductShowcase() {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActive(p.id)}
-                    className={`group flex items-center gap-2.5 h-11 pl-2.5 pr-4 rounded-full border transition-all ${
+                    className={`group flex w-full lg:w-auto items-center justify-start gap-2.5 min-h-11 pl-2.5 pr-3 sm:pr-4 rounded-full border transition-all ${
+                      index === products.length - 1 ? 'max-[559px]:col-span-2 max-[559px]:justify-center' : ''
+                    } ${
                       isActive
                         ? `bg-ink text-white border-ink shadow-card`
                         : 'bg-white text-ink-700 border-line hover:border-ink/25'
@@ -131,7 +133,7 @@ export default function ProductShowcase() {
                     <span className={`w-7 h-7 rounded-full grid place-items-center ${isActive ? 'bg-white/10' : pa.chip + ' border'}`}>
                       <p.Icon size={14} />
                     </span>
-                    <span className="text-[13px] font-semibold tracking-tight">{p.label}</span>
+                    <span className="min-w-0 truncate text-[13px] font-semibold tracking-tight">{p.label}</span>
                     <span className={`hidden sm:inline text-[10.5px] font-mono uppercase tracking-wider ${isActive ? 'text-white/55' : 'text-muted-soft'}`}>
                       {p.sub}
                     </span>
@@ -164,7 +166,7 @@ export default function ProductShowcase() {
                 </li>
               ))}
             </ul>
-            <div className="mt-9 flex items-center gap-3">
+            <div className="mt-9 flex flex-col sm:flex-row sm:items-center gap-3">
               <a href={`/products#${current.id === 'aegis' ? 'ai-grc' : current.id === 'studio' ? 'ai-studio' : current.id === 'builder' ? 'flow-builder' : current.id === 'integration' ? 'integration-studio' : 'platform-api'}`} className="btn btn-primary">
                 Explore {current.label} <ArrowRight size={15} />
               </a>
@@ -173,7 +175,7 @@ export default function ProductShowcase() {
           </div>
 
           {/* Right: mockup */}
-          <div className="relative">
+          <div className="relative min-w-0">
             {active === 'aegis' &&     <AegisMockup />}
             {active === 'studio' &&    <StudioMockup />}
             {active === 'builder' &&   <BuilderMockup />}
@@ -191,12 +193,12 @@ export default function ProductShowcase() {
 function MockShell({ title, children, badge }) {
   return (
     <div className="relative rounded-2xl bg-paper border border-line shadow-elevated overflow-hidden">
-      <div className="h-10 px-4 flex items-center gap-1.5 border-b border-line bg-mist">
+      <div className="h-10 px-3 sm:px-4 flex items-center gap-1.5 border-b border-line bg-mist">
         <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
         <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
         <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-        <div className="ml-3 text-[11px] font-mono text-muted">{title}</div>
-        {badge && <div className="ml-auto">{badge}</div>}
+        <div className="ml-2 sm:ml-3 min-w-0 truncate text-[11px] font-mono text-muted">{title}</div>
+        {badge && <div className="ml-auto hidden sm:block flex-shrink-0">{badge}</div>}
       </div>
       {children}
     </div>
@@ -220,7 +222,7 @@ function AegisMockup() {
     }>
       <div className="p-4">
         {/* Top stat strip */}
-        <div className="grid grid-cols-4 gap-2 mb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
           {[
             { l: 'Policies', v: '21', d: 'Active' },
             { l: 'Pass rate', v: '99.97%', d: '24h' },
@@ -259,13 +261,13 @@ function AegisMockup() {
         </div>
 
         {/* Evidence banner */}
-        <div className="mt-4 rounded-lg border border-teal/30 bg-teal-50 p-3 flex items-center gap-3">
+        <div className="mt-4 rounded-lg border border-teal/30 bg-teal-50 p-3 flex flex-wrap sm:flex-nowrap items-center gap-3">
           <ShieldCheck size={18} className="text-teal-600" />
           <div className="flex-1 min-w-0">
             <div className="text-[12.5px] font-semibold text-ink">Evidence pack written</div>
             <div className="text-[11px] text-muted font-mono truncate">sha 8f3a9d…b21c · mapped: SOC2-CC7.2, ISO-A.8.16, EU-AI-Art.12</div>
           </div>
-          <span className="text-[10.5px] font-bold uppercase tracking-wider text-teal-700">Sealed</span>
+          <span className="text-[10.5px] font-bold uppercase tracking-wider text-teal-700 sm:flex-shrink-0">Sealed</span>
         </div>
       </div>
     </MockShell>
@@ -309,7 +311,7 @@ function StudioMockup() {
               </span>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 mb-3">
+            <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-2 mb-3">
               {[
                 { l: 'p95', v: '312ms' }, { l: 'tokens / run', v: '4.1k' }, { l: 'cost / 1k', v: '$0.08' },
               ].map((m) => (
@@ -320,7 +322,7 @@ function StudioMockup() {
               ))}
             </div>
 
-            <div className="rounded-md bg-ink text-white/85 font-mono text-[11.5px] leading-relaxed p-3">
+            <div className="rounded-md bg-ink text-white/85 font-mono text-[11.5px] leading-relaxed p-3 overflow-x-auto">
               <span className="text-violet-400">skill</span> <span className="text-amber-400">rag.policy_docs</span> {'{'}<br/>
               {'  '}<span className="text-white/55">phase:</span> <span className="text-emerald-400">"pre_llm"</span>,<br/>
               {'  '}<span className="text-white/55">retriever:</span> <span className="text-emerald-400">"weaviate://policies"</span>,<br/>
@@ -329,7 +331,7 @@ function StudioMockup() {
             </div>
           </div>
 
-          <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="mt-3 grid grid-cols-1 min-[420px]:grid-cols-2 gap-2">
             <div className="rounded-lg border border-line bg-paper p-3">
               <div className="mono-label text-[9.5px]">Last 24h</div>
               <div className="text-[18px] font-bold text-ink mt-1">8,412 <span className="text-[11px] font-semibold text-muted">runs</span></div>
@@ -363,7 +365,8 @@ function BuilderMockup() {
     <MockShell title="flow-builder / customer-onboarding.v2" badge={
       <span className="text-[10.5px] font-mono text-muted">DAG · 7 nodes · valid</span>
     }>
-      <div className="relative h-[440px] bg-grid bg-[length:24px_24px] bg-mist/40">
+      <div className="overflow-x-auto">
+      <div className="relative h-[380px] sm:h-[440px] min-w-[600px] bg-grid bg-[length:24px_24px] bg-mist/40">
         <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 440" preserveAspectRatio="none">
           <defs>
             <marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto">
@@ -403,6 +406,7 @@ function BuilderMockup() {
           <span className="text-[10.5px] font-mono text-muted">test mode · isolated</span>
         </div>
       </div>
+      </div>
     </MockShell>
   )
 }
@@ -424,7 +428,7 @@ function IntegrationMockup() {
       <span className="text-[10.5px] font-mono text-muted">7 of 9 enabled · 0 incidents</span>
     }>
       <div className="p-4">
-        <div className="grid grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
           {tiles.map((t) => (
             <div key={t.name} className={`rounded-xl border p-3 ${t.active ? 'bg-paper border-line shadow-card' : 'bg-mist/40 border-line/70'} ${t.custom ? '!border-dashed !border-teal/40 bg-teal-50/40' : ''}`}>
               <div className="flex items-start justify-between">
@@ -446,13 +450,13 @@ function IntegrationMockup() {
           ))}
         </div>
 
-        <div className="mt-4 rounded-lg border border-line bg-mist/30 p-3 flex items-center gap-3">
+        <div className="mt-4 rounded-lg border border-line bg-mist/30 p-3 flex flex-wrap sm:flex-nowrap items-center gap-3">
           <div className="w-8 h-8 rounded-md bg-ink text-white grid place-items-center"><Lock size={14}/></div>
           <div className="flex-1 min-w-0">
             <div className="text-[12.5px] font-semibold text-ink">Secret Vault · AES-256-GCM</div>
             <div className="text-[11px] text-muted font-mono">14 secrets · rotated avg every 47 days · 0 expired</div>
           </div>
-          <span className="text-[10.5px] font-bold uppercase tracking-wider text-teal-700">Encrypted</span>
+          <span className="text-[10.5px] font-bold uppercase tracking-wider text-teal-700 sm:flex-shrink-0">Encrypted</span>
         </div>
       </div>
     </MockShell>
@@ -484,13 +488,13 @@ function ApiMockup() {
         </aside>
 
         <div className="p-4">
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">GET</span>
             <span className="text-[12.5px] font-mono text-ink">/v1.0/ai-studio/agents</span>
-            <span className="ml-auto text-[10.5px] font-bold uppercase tracking-wider text-emerald-600">200 OK · 42ms</span>
+            <span className="sm:ml-auto text-[10.5px] font-bold uppercase tracking-wider text-emerald-600">200 OK · 42ms</span>
           </div>
 
-          <div className="rounded-lg bg-ink text-white/85 font-mono text-[11px] leading-relaxed p-3 overflow-hidden">
+          <div className="rounded-lg bg-ink text-white/85 font-mono text-[11px] leading-relaxed p-3 overflow-x-auto">
             <div><span className="text-emerald-400">[</span></div>
             <div>{'  '}<span className="text-emerald-400">{'{'}</span></div>
             <div>{'    '}<span className="text-amber-400">"id"</span>: <span className="text-teal-400">"agt_b21c…"</span>,</div>
@@ -505,7 +509,7 @@ function ApiMockup() {
             <div><span className="text-emerald-400">]</span></div>
           </div>
 
-          <div className="mt-3 grid grid-cols-3 gap-2">
+          <div className="mt-3 grid grid-cols-1 min-[420px]:grid-cols-3 gap-2">
             {[
               { l: 'p99', v: '88ms' },
               { l: 'Uptime', v: '99.99%' },

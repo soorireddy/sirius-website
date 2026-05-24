@@ -306,7 +306,7 @@ export default function LegalModal({ type, onClose }) {
     <div
       ref={overlayRef}
       onClick={(e) => e.target === overlayRef.current && onClose()}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm"
     >
       <div
         className="relative w-full max-w-2xl rounded-2xl border border-white/[0.12] flex flex-col"
@@ -314,14 +314,14 @@ export default function LegalModal({ type, onClose }) {
       >
         {/* Sticky header */}
         <div
-          className="flex items-center gap-3 px-7 py-5 border-b border-white/[0.08] flex-shrink-0"
+          className="flex items-center gap-3 px-4 sm:px-7 py-5 border-b border-white/[0.08] flex-shrink-0"
           style={{ background: '#13141a' }}
         >
           <div className="w-9 h-9 rounded-lg grid place-items-center flex-shrink-0"
             style={{ background: bg, border: `1px solid ${color}30` }}>
             <Icon size={16} style={{ color }} />
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="text-[15px] font-bold text-white">{title}</div>
             <div className="text-[11px] text-white/40">{subtitle}</div>
           </div>
@@ -334,7 +334,7 @@ export default function LegalModal({ type, onClose }) {
         </div>
 
         {/* Scrollable body */}
-        <div className="overflow-y-auto flex-1 px-7 py-7">
+        <div className="overflow-y-auto flex-1 px-4 sm:px-7 py-6 sm:py-7">
           {sections.map((s) => (
             <Section key={s.heading} heading={s.heading} body={s.body} />
           ))}

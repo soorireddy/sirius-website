@@ -219,7 +219,7 @@ export default function DocsPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative bg-ink text-white pt-28 pb-20 overflow-hidden">
+      <section className="relative bg-ink text-white pt-24 sm:pt-28 pb-16 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-mesh-dark" />
         <div
           className="absolute inset-0 -z-10 bg-grid-dark opacity-40"
@@ -227,7 +227,7 @@ export default function DocsPage() {
         />
         <div className="container-wide text-center">
           <Reveal>
-            <div className="eyebrow-dark inline-flex mb-6">
+            <div className="eyebrow-dark inline-flex h-auto min-h-7 py-1 mb-6">
               <Book size={12} />
               Documentation
             </div>
@@ -336,9 +336,9 @@ export default function DocsPage() {
             </Reveal>
 
             {/* Right: code block */}
-            <Reveal delay={150}>
+            <Reveal delay={150} className="min-w-0">
               {/* Tab switcher */}
-              <div className="flex gap-1 p-1 rounded-xl bg-white/[0.06] border border-white/10 mb-4 w-fit">
+              <div className="flex gap-1 p-1 rounded-xl bg-white/[0.06] border border-white/10 mb-4 w-full min-[420px]:w-fit overflow-x-auto">
                 {[
                   { key: 'python', label: 'Python' },
                   { key: 'typescript', label: 'TypeScript' },
@@ -347,7 +347,7 @@ export default function DocsPage() {
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`h-8 px-4 rounded-lg text-[12.5px] font-semibold transition-all ${
+                    className={`h-8 px-4 rounded-lg text-[12.5px] font-semibold transition-all whitespace-nowrap ${
                       activeTab === key
                         ? 'bg-white/15 text-white'
                         : 'text-white/50 hover:text-white/80'
@@ -395,7 +395,7 @@ export default function DocsPage() {
                     </span>
                     <div className="flex-1 min-w-0">
                       <div className="text-[13px] font-semibold text-ink leading-snug mb-2 group-hover:text-teal transition-colors">{g.title}</div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                         <span className="text-[10.5px] font-bold uppercase tracking-wider text-muted-light px-2 py-0.5 rounded-full bg-mist border border-line">
                           {g.tag}
                         </span>
@@ -433,7 +433,7 @@ export default function DocsPage() {
                       {sdk.badge}
                     </span>
                   </div>
-                  <div className="font-mono text-[12px] text-white/60 bg-black/30 rounded-lg px-3 py-2.5 mb-4">
+                  <div className="font-mono text-[12px] text-white/60 bg-black/30 rounded-lg px-3 py-2.5 mb-4 overflow-x-auto">
                     {sdk.pkg}
                   </div>
                   <a href="#" className="flex items-center gap-2 text-[12.5px] font-semibold text-white/60 group-hover:text-white transition-colors">

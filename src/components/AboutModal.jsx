@@ -75,14 +75,14 @@ export default function AboutModal({ open, onClose }) {
     <div
       ref={overlayRef}
       onClick={(e) => e.target === overlayRef.current && onClose()}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm"
     >
       <div
         className="relative w-full max-w-3xl rounded-2xl border border-white/[0.12] flex flex-col"
         style={{ background: '#13141a', boxShadow: '0 32px 80px rgba(0,0,0,0.8)', maxHeight: '92vh' }}
       >
         {/* Sticky header */}
-        <div className="flex items-center gap-3 px-8 py-5 border-b border-white/[0.08] flex-shrink-0"
+        <div className="flex items-center gap-3 px-4 sm:px-8 py-5 border-b border-white/[0.08] flex-shrink-0"
           style={{ background: '#13141a' }}>
           <span className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-white/10 flex-shrink-0">
             <span className="absolute inset-0 bg-gradient-to-br from-teal-400 via-violet-500 to-orange-400" />
@@ -90,7 +90,7 @@ export default function AboutModal({ open, onClose }) {
               <Star size={14} className="text-white" />
             </span>
           </span>
-          <div>
+          <div className="min-w-0">
             <div className="text-[15px] font-bold text-white">About Sudheeksha</div>
             <div className="text-[11px] text-white/45">The team building governed AI for the enterprise</div>
           </div>
@@ -103,7 +103,7 @@ export default function AboutModal({ open, onClose }) {
         </div>
 
         {/* Scrollable body */}
-        <div className="overflow-y-auto flex-1 px-8 py-8 space-y-12">
+        <div className="overflow-y-auto flex-1 px-4 sm:px-8 py-6 sm:py-8 space-y-10 sm:space-y-12">
 
           {/* Origin story */}
           <div>

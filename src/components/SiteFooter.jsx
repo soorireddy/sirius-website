@@ -236,7 +236,7 @@ export default function SiteFooter() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/[0.07]">
-          <div className="container-wide py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="container-wide py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             {/* Compliance badges */}
             <div className="flex flex-wrap items-center gap-3">
               {compliance.map((c) => (
@@ -248,7 +248,7 @@ export default function SiteFooter() {
             </div>
 
             {/* Legal */}
-            <div className="flex items-center gap-4 text-[11.5px] text-white/35">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11.5px] text-white/35">
               <span>© 2026 Sudheeksha Software Solutions Pvt. Ltd.</span>
               <button onClick={() => setLegalType('privacy')}  className="hover:text-white/70 transition-colors">Privacy</button>
               <button onClick={() => setLegalType('terms')}    className="hover:text-white/70 transition-colors">Terms</button>

@@ -165,7 +165,7 @@ function ProductSection({ product, index }) {
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
               <a
                 href="/docs"
                 className="btn h-11 px-5 text-ink font-semibold"
@@ -180,7 +180,7 @@ function ProductSection({ product, index }) {
           </Reveal>
 
           {/* Visual */}
-          <Reveal delay={180}>
+          <Reveal delay={180} className="min-w-0">
             {visual}
           </Reveal>
         </div>
@@ -194,12 +194,12 @@ function ProductSection({ product, index }) {
 function Shell({ title, children, badge }) {
   return (
     <div className="rounded-2xl overflow-hidden border border-white/10 bg-ink-800/80 backdrop-blur-xl shadow-elevated">
-      <div className="h-10 px-4 flex items-center gap-1.5 border-b border-white/10 bg-black/30">
+      <div className="h-10 px-3 sm:px-4 flex items-center gap-1.5 border-b border-white/10 bg-black/30">
         <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
         <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
         <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
-        <span className="ml-3 text-[11px] font-mono text-white/45">{title}</span>
-        {badge && <div className="ml-auto">{badge}</div>}
+        <span className="ml-2 sm:ml-3 min-w-0 truncate text-[11px] font-mono text-white/45">{title}</span>
+        {badge && <div className="ml-auto hidden sm:block flex-shrink-0">{badge}</div>}
       </div>
       {children}
     </div>
@@ -221,7 +221,7 @@ function AiGrcVisual() {
       </span>
     }>
       <div className="p-4 space-y-3">
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {[
             { l: 'Policies', v: '21' }, { l: 'Pass rate', v: '99.97%' },
             { l: 'HITL queue', v: '3', hot: true }, { l: 'Evidence packs', v: '8.4k/mo' },
@@ -232,20 +232,22 @@ function AiGrcVisual() {
             </div>
           ))}
         </div>
-        <div className="rounded-xl border border-white/10 overflow-hidden">
-          <div className="grid grid-cols-[72px_1fr_80px_76px] px-3 h-8 items-center bg-white/[0.04] text-[9.5px] font-mono uppercase tracking-wider text-white/40">
-            <span>ID</span><span>Policy</span><span>Severity</span><span className="text-right">Status</span>
-          </div>
-          {policies.map((p) => (
-            <div key={p.id} className="grid grid-cols-[72px_1fr_80px_76px] px-3 h-11 items-center border-t border-white/[0.06] hover:bg-white/[0.03] transition-colors">
-              <span className="font-mono text-[10px] text-white/35">{p.id}</span>
-              <span className="text-[12px] font-medium text-white/80 truncate pr-2">{p.name}</span>
-              <span className="text-[10px] font-bold" style={{ color: p.color }}>{p.sev}</span>
-              <span className="text-right text-[10.5px] font-semibold text-emerald-400">{p.status}</span>
+        <div className="rounded-xl border border-white/10 overflow-x-auto">
+          <div className="min-w-[480px]">
+            <div className="grid grid-cols-[72px_1fr_80px_76px] px-3 h-8 items-center bg-white/[0.04] text-[9.5px] font-mono uppercase tracking-wider text-white/40">
+              <span>ID</span><span>Policy</span><span>Severity</span><span className="text-right">Status</span>
             </div>
-          ))}
+            {policies.map((p) => (
+              <div key={p.id} className="grid grid-cols-[72px_1fr_80px_76px] px-3 h-11 items-center border-t border-white/[0.06] hover:bg-white/[0.03] transition-colors">
+                <span className="font-mono text-[10px] text-white/35">{p.id}</span>
+                <span className="text-[12px] font-medium text-white/80 truncate pr-2">{p.name}</span>
+                <span className="text-[10px] font-bold" style={{ color: p.color }}>{p.sev}</span>
+                <span className="text-right text-[10.5px] font-semibold text-emerald-400">{p.status}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="rounded-xl border border-teal-500/25 bg-teal-500/[0.08] p-3 flex items-center gap-3">
+        <div className="rounded-xl border border-teal-500/25 bg-teal-500/[0.08] p-3 flex flex-wrap sm:flex-nowrap items-center gap-3">
           <ShieldCheck size={16} className="text-teal-400 flex-shrink-0" />
           <div className="flex-1 min-w-0">
             <div className="text-[12px] font-semibold text-white">Evidence pack sealed</div>
@@ -263,8 +265,8 @@ function AiStudioVisual() {
     <Shell title="ai-studio / agents / risk-assessor.v3">
       <div className="p-4 space-y-3">
         <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-          <div className="flex items-center justify-between mb-3">
-            <div>
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div className="min-w-0">
               <div className="text-[13px] font-bold text-white">risk_assessor</div>
               <div className="text-[11px] text-white/45 font-mono">claude-opus-4-7 · 6 skills · 4 tools</div>
             </div>
@@ -272,7 +274,7 @@ function AiStudioVisual() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Healthy
             </span>
           </div>
-          <div className="font-mono text-[11.5px] text-white/80 bg-black/40 rounded-lg p-3 leading-relaxed">
+          <div className="font-mono text-[11.5px] text-white/80 bg-black/40 rounded-lg p-3 leading-relaxed overflow-x-auto">
             <div><span className="text-violet-400">skills</span>: [</div>
             <div className="pl-4"><span className="text-teal-400">"rag.policy_docs"</span>,</div>
             <div className="pl-4"><span className="text-teal-400">"few_shot.loan_cases"</span>,</div>
@@ -283,7 +285,7 @@ function AiStudioVisual() {
             <div className="mt-2"><span className="text-violet-400">governance</span>: <span className="text-emerald-400">{ '{' }</span> <span className="text-white/50">policy: "strict"</span> <span className="text-emerald-400">{ '}' }</span></div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-2">
           {[
             { l: 'p95 latency', v: '312ms' }, { l: 'Tokens/run', v: '4.1k' }, { l: 'Cost/1k', v: '$0.08' },
           ].map((m) => (
@@ -321,7 +323,8 @@ function FlowBuilderVisual() {
     <Shell title="flow-builder / loan-application.v3" badge={
       <span className="text-[10px] font-mono text-white/40">DAG · 5 nodes · valid</span>
     }>
-      <div className="relative bg-white/[0.02] p-4" style={{ minHeight: 320 }}>
+      <div className="overflow-x-auto">
+      <div className="relative min-w-[480px] bg-white/[0.02] p-4" style={{ minHeight: 320 }}>
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -373,6 +376,7 @@ function FlowBuilderVisual() {
           <span className="text-[10px] font-mono text-white/45">test mode · isolated</span>
         </div>
       </div>
+      </div>
     </Shell>
   )
 }
@@ -394,7 +398,7 @@ function IntegrationVisual() {
       <span className="text-[10px] font-mono text-white/45">7 of 9 active · 0 incidents</span>
     }>
       <div className="p-4 space-y-3">
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {connectors.map((c) => (
             <div
               key={c.name}
@@ -419,7 +423,7 @@ function IntegrationVisual() {
             </div>
           ))}
         </div>
-        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 flex items-center gap-3">
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 flex flex-wrap sm:flex-nowrap items-center gap-3">
           <Lock size={14} className="text-amber-400 flex-shrink-0" />
           <div className="flex-1 min-w-0">
             <div className="text-[12px] font-semibold text-white">Secret Vault · AES-256-GCM</div>
@@ -440,8 +444,8 @@ function PlatformApiVisual() {
       <div className="p-4 space-y-3">
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">GET</span>
-          <span className="text-[12px] font-mono text-white/80">/v1.0/ai-studio/agents</span>
-          <span className="ml-auto text-[10px] font-bold text-emerald-400">200 OK · 42ms</span>
+          <span className="text-[12px] font-mono text-white/80 break-all">/v1.0/ai-studio/agents</span>
+          <span className="sm:ml-auto text-[10px] font-bold text-emerald-400">200 OK · 42ms</span>
         </div>
         <div className="rounded-xl bg-black/50 border border-white/10 font-mono text-[11.5px] leading-relaxed p-4 overflow-x-auto">
           <div><span className="text-white/40">{'// Response'}</span></div>
@@ -457,7 +461,7 @@ function PlatformApiVisual() {
           <div className="pl-4"><span className="text-emerald-400">{'}'}</span></div>
           <div><span className="text-emerald-400">]</span></div>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-2">
           {[
             { l: 'p99 latency', v: '88ms' },
             { l: 'Uptime SLA', v: '99.99%' },
@@ -481,7 +485,7 @@ export default function ProductsPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative bg-ink text-white pt-28 pb-20 overflow-hidden">
+      <section className="relative bg-ink text-white pt-24 sm:pt-28 pb-16 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-mesh-dark" />
         <div
           className="absolute inset-0 -z-10 bg-grid-dark opacity-40"
@@ -489,7 +493,7 @@ export default function ProductsPage() {
         />
         <div className="container-wide text-center">
           <Reveal>
-            <div className="eyebrow-dark inline-flex mb-6">Five products · One governed runtime</div>
+            <div className="eyebrow-dark inline-flex h-auto min-h-7 py-1 mb-6">Five products · One governed runtime</div>
             <h1 className="font-display text-display-xl text-white mb-5">
               The complete AI platform<br className="hidden sm:block" />
               <span className="text-gradient"> for the enterprise.</span>

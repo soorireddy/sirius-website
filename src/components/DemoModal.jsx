@@ -19,7 +19,7 @@ export default function DemoModal({ open, onClose }) {
     <div
       ref={overlayRef}
       onClick={(e) => e.target === overlayRef.current && onClose()}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm"
     >
       <div
         className="relative w-full max-w-2xl rounded-2xl border border-white/[0.12] overflow-hidden flex flex-col"
@@ -30,11 +30,11 @@ export default function DemoModal({ open, onClose }) {
         }}
       >
         {/* Header */}
-        <div className="flex items-center gap-3 px-6 py-4 border-b border-white/[0.08] flex-shrink-0">
+        <div className="flex items-center gap-3 px-4 sm:px-6 py-4 border-b border-white/[0.08] flex-shrink-0">
           <div className="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/25 grid place-items-center">
             <Calendar size={15} className="text-teal-400" />
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="text-[14px] font-bold text-white leading-none">Book a 30-min demo</div>
             <div className="text-[11.5px] text-white/45 mt-0.5">Pick a time that works for you</div>
           </div>

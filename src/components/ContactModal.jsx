@@ -51,10 +51,10 @@ export default function ContactModal({ open, onClose }) {
     <div
       ref={overlayRef}
       onClick={(e) => e.target === overlayRef.current && onClose()}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm"
     >
       <div
-        className="relative w-full max-w-lg rounded-2xl border border-white/[0.12] p-8"
+        className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto rounded-2xl border border-white/[0.12] p-5 sm:p-8"
         style={{ background: '#1a1c23', boxShadow: '0 24px 64px rgba(0,0,0,0.75)' }}
       >
         <button
