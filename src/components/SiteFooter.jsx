@@ -196,7 +196,7 @@ export default function SiteFooter() {
               </div>
 
               {/* Social links */}
-              <div className="flex gap-3">
+              <div className="hidden flex gap-3">
                 {[
                   { Icon: Github,   href: '#github',   label: 'GitHub' },
                   { Icon: Twitter,  href: '#twitter',  label: 'Twitter' },
