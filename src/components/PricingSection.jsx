@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react'
 import Reveal from './Reveal'
+import { useDemo } from '../context/DemoModalContext'
 
 const tiers = [
   {
@@ -67,6 +68,7 @@ const tiers = [
 ]
 
 export default function PricingSection() {
+  const { openDemo } = useDemo()
   return (
     <section id="pricing" className="relative bg-cream py-24 border-t border-line overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-mesh-light" />
@@ -122,8 +124,8 @@ export default function PricingSection() {
                   </div>
                 </div>
 
-                <a
-                  href="#demo"
+                <button
+                  onClick={openDemo}
                   className={`btn mb-7 w-full justify-center ${
                     tier.ctaStyle === 'primary'
                       ? 'bg-white text-ink hover:bg-white/90'
@@ -134,7 +136,7 @@ export default function PricingSection() {
                 >
                   {tier.cta}
                   <ArrowRight size={14} />
-                </a>
+                </button>
 
                 <div className={`text-[10.5px] font-bold uppercase tracking-wider mb-3 ${isEnterprise ? 'text-white/40' : 'text-muted-light'}`}>
                   Included

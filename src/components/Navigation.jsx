@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, ChevronDown, ArrowRight, ShieldCheck, Workflow, Boxes, Plug, Code2 } from 'lucide-react'
+import { useDemo } from '../context/DemoModalContext'
 
 const productMenu = [
   { icon: ShieldCheck, name: 'Sirius AI GRC',    desc: 'Governance, Risk & Compliance', tag: 'Flagship', href: '/products#ai-grc' },
@@ -20,6 +21,7 @@ const navLinks = [
 ]
 
 export default function Navigation() {
+  const { openDemo } = useDemo()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
@@ -158,13 +160,13 @@ export default function Navigation() {
 
           {/* Right actions */}
           <div className="hidden lg:flex items-center gap-2">
-            <a
-              href="/#demo"
+            <button
+              onClick={openDemo}
               className="h-9 px-4 inline-flex items-center gap-1.5 rounded-md text-[13.5px] font-semibold bg-white text-ink hover:bg-white/90 transition-colors"
             >
               Book a demo
               <ArrowRight size={14} />
-            </a>
+            </button>
           </div>
 
           {/* Mobile toggle */}
@@ -203,12 +205,12 @@ export default function Navigation() {
                 )
               )}
               <div className="pt-3 px-3">
-                <a
-                  href="/#demo"
-                  className="flex h-11 items-center justify-center rounded-md text-sm font-semibold bg-white text-ink"
+                <button
+                  onClick={() => { setOpen(false); openDemo() }}
+                  className="flex w-full h-11 items-center justify-center rounded-md text-sm font-semibold bg-white text-ink"
                 >
                   Book a demo
-                </a>
+                </button>
               </div>
             </div>
           </div>

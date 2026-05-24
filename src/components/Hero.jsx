@@ -1,7 +1,9 @@
 import { ArrowRight, ShieldCheck, Activity, GitBranch, CheckCircle2, Sparkles } from 'lucide-react'
 import NetworkCanvas from './NetworkCanvas'
+import { useDemo } from '../context/DemoModalContext'
 
 export default function Hero() {
+  const { openDemo } = useDemo()
   return (
     <section className="relative isolate overflow-hidden bg-ink text-white pt-28 lg:pt-36 pb-24">
       {/* Mesh + grid background */}
@@ -33,9 +35,9 @@ export default function Hero() {
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a href="#demo" className="btn h-12 px-5 bg-white text-ink hover:bg-white/90 shadow-elevated">
+              <button onClick={openDemo} className="btn h-12 px-5 bg-white text-ink hover:bg-white/90 shadow-elevated">
                 Book a 30-min demo <ArrowRight size={16} />
-              </a>
+              </button>
               <a href="#architecture" className="btn btn-glass h-12 px-5">
                 See the architecture
               </a>

@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation'
 import CTASection from '../components/CTASection'
 import SiteFooter from '../components/SiteFooter'
 import Reveal from '../components/Reveal'
+import { useDemo } from '../context/DemoModalContext'
 
 /* ─── Product data ───────────────────────────────────────────────── */
 const products = [
@@ -115,6 +116,7 @@ const products = [
 
 /* ─── Product section (alternating layout) ───────────────────────── */
 function ProductSection({ product, index }) {
+  const { openDemo } = useDemo()
   const { id, Icon, accent, accentBg, accentBorder, label, tag, title, desc, features, visual } = product
   const isEven = index % 2 === 0
 
@@ -171,9 +173,9 @@ function ProductSection({ product, index }) {
               >
                 View docs <ArrowRight size={15} />
               </a>
-              <a href="/#demo" className="btn btn-glass h-11 px-5">
+              <button onClick={openDemo} className="btn btn-glass h-11 px-5">
                 Book a demo
-              </a>
+              </button>
             </div>
           </Reveal>
 
