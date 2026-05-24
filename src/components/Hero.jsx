@@ -18,7 +18,7 @@ export default function Hero() {
           <div>
             <div className="eyebrow-dark inline-flex">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse-soft" />
-              AEGIS · Enterprise AI Governance, GA Q3 2026
+              Sirius AI GRC · Enterprise Governance, GA Q3 2026
             </div>
 
             <h1 className="mt-6 font-display text-display-xl text-white">
@@ -92,9 +92,9 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-[160px_1fr] min-h-[440px]">
+              <div className="grid sm:grid-cols-[150px_1fr] min-h-[380px] sm:min-h-[440px]">
                 {/* Sidebar */}
-                <aside className="border-r border-white/8 bg-black/20 p-2.5 space-y-0.5">
+                <aside className="hidden sm:block border-r border-white/8 bg-black/20 p-2.5 space-y-0.5">
                   {[
                     { label: 'Control Tower', active: true },
                     { label: 'Agents', count: 14 },
@@ -117,7 +117,7 @@ export default function Hero() {
                 {/* Main */}
                 <div className="p-4 space-y-3 bg-grid-dark bg-[length:32px_32px]">
                   {/* Top metrics strip */}
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {[
                       { l: 'Active agents', v: '14', d: '+2' },
                       { l: 'Runs / hr', v: '12.8k', d: '+18%' },

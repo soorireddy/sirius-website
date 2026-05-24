@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Menu, X, ChevronDown, ArrowRight, ShieldCheck, Workflow, Boxes, Plug, Code2 } from 'lucide-react'
 
 const productMenu = [
-  { icon: ShieldCheck, name: 'AEGIS Governance', desc: 'AI GRC + policy engine', tag: 'Flagship' },
+  { icon: ShieldCheck, name: 'Sirius AI GRC', desc: 'Governance, Risk & Compliance', tag: 'Flagship' },
   { icon: Workflow, name: 'AI Studio', desc: 'Agents, skills, tools', tag: 'Core' },
   { icon: Boxes, name: 'Flow Builder', desc: 'Visual DAG composer', tag: '' },
   { icon: Plug, name: 'Integration Studio', desc: '50+ connectors', tag: '' },
@@ -111,9 +111,6 @@ export default function Navigation() {
 
           {/* Right actions */}
           <div className="hidden lg:flex items-center gap-2">
-            <a href="#signin" className="h-9 px-3 inline-flex items-center text-[13.5px] font-medium text-white/70 hover:text-white">
-              Sign in
-            </a>
             <a href="#demo" className="h-9 px-4 inline-flex items-center gap-1.5 rounded-md text-[13.5px] font-semibold bg-white text-ink hover:bg-white/90 transition-colors">
               Book a demo
               <ArrowRight size={14} />
@@ -136,7 +133,6 @@ export default function Navigation() {
                 </a>
               ))}
               <div className="pt-3 grid gap-2">
-                <a href="#signin" className="h-11 px-3 flex items-center rounded-md text-sm font-medium text-white border border-white/15">Sign in</a>
                 <a href="#demo" className="h-11 px-3 flex items-center justify-center rounded-md text-sm font-semibold bg-white text-ink">Book a demo</a>
               </div>
             </div>

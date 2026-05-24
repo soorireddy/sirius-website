@@ -1,4 +1,5 @@
 import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react'
+import Reveal from './Reveal'
 
 const tiers = [
   {
@@ -14,7 +15,7 @@ const tiers = [
       'Flow builder — unlimited flows',
       'AI Studio — 3 skill types',
       '10 integration connectors',
-      'Basic AEGIS policy engine',
+      'Basic AI GRC policy engine',
       'Audit log (90-day retention)',
       'Email + Slack support',
       'Community Slack channel',
@@ -33,7 +34,7 @@ const tiers = [
       'Unlimited agents + flows',
       'Full AI Studio — all 8 skill types',
       '50+ integration connectors',
-      'Full AEGIS GRC suite',
+      'Full Sirius AI GRC suite',
       'HITL approval workflows',
       'ABOM on every deployment',
       'Evidence packs: SOC 2, ISO 27001, HIPAA, EU AI Act, GDPR',
@@ -68,12 +69,11 @@ const tiers = [
 export default function PricingSection() {
   return (
     <section id="pricing" className="relative bg-cream py-24 border-t border-line overflow-hidden">
-      {/* Subtle background */}
       <div className="absolute inset-0 -z-10 bg-mesh-light" />
 
       <div className="container-wide">
         {/* Header */}
-        <div className="text-center mb-14">
+        <Reveal className="text-center mb-14">
           <div className="eyebrow inline-flex mb-4">
             Transparent pricing
           </div>
@@ -83,22 +83,22 @@ export default function PricingSection() {
           <p className="text-[15px] text-muted max-w-lg mx-auto">
             No per-seat surprises. No hidden compliance add-ons. Governance is included, not a premium tier.
           </p>
-        </div>
+        </Reveal>
 
         {/* Pricing cards */}
         <div className="grid lg:grid-cols-3 gap-6 items-start">
-          {tiers.map((tier) => {
+          {tiers.map((tier, i) => {
             const isEnterprise = tier.name === 'Enterprise'
             return (
-              <div
+              <Reveal
                 key={tier.name}
+                delay={i * 100}
                 className={`relative rounded-2xl p-6 flex flex-col transition-all duration-300 ${
                   isEnterprise
                     ? 'bg-ink text-white shadow-elevated ring-1 ring-teal-500/30 lg:-mt-4 lg:pb-10'
                     : 'bg-white text-ink border border-line shadow-card hover:shadow-card-hover hover:-translate-y-1'
                 }`}
               >
-                {/* Tag */}
                 {tier.tag && (
                   <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-widest whitespace-nowrap ${
                     isEnterprise
@@ -122,7 +122,6 @@ export default function PricingSection() {
                   </div>
                 </div>
 
-                {/* CTA */}
                 <a
                   href="#demo"
                   className={`btn mb-7 w-full justify-center ${
@@ -137,7 +136,6 @@ export default function PricingSection() {
                   <ArrowRight size={14} />
                 </a>
 
-                {/* Features */}
                 <div className={`text-[10.5px] font-bold uppercase tracking-wider mb-3 ${isEnterprise ? 'text-white/40' : 'text-muted-light'}`}>
                   Included
                 </div>
@@ -155,24 +153,24 @@ export default function PricingSection() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             )
           })}
         </div>
 
         {/* Footer note */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-[12.5px] text-muted">
+        <Reveal delay={300} className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[12.5px] text-muted">
           {[
-            { icon: ShieldCheck, text: 'All plans include SOC 2 Type II infrastructure' },
-            { icon: ShieldCheck, text: 'No data used for LLM training' },
-            { icon: ShieldCheck, text: 'GDPR DPA available on request' },
-          ].map(({ icon: Icon, text }) => (
+            { text: 'All plans include SOC 2 Type II infrastructure' },
+            { text: 'No data used for LLM training' },
+            { text: 'GDPR DPA available on request' },
+          ].map(({ text }) => (
             <div key={text} className="flex items-center gap-2">
-              <Icon size={13} className="text-teal" />
+              <ShieldCheck size={13} className="text-teal" />
               {text}
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

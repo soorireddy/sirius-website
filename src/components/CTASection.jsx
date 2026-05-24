@@ -1,20 +1,19 @@
 import { ArrowRight, Calendar, ShieldCheck, Clock } from 'lucide-react'
 import NetworkCanvas from './NetworkCanvas'
+import Reveal from './Reveal'
 
 export default function CTASection() {
   return (
     <section id="demo" className="relative bg-ink text-white py-28 overflow-hidden">
-      {/* Layered backgrounds */}
       <div className="absolute inset-0 -z-10 bg-mesh-dark" />
       <NetworkCanvas className="absolute inset-0 -z-10 w-full h-full opacity-25" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-teal-950/20 to-transparent" />
 
       <div className="container-wide">
-        <div className="max-w-2xl mx-auto text-center">
-          {/* Eyebrow */}
+        <Reveal className="max-w-2xl mx-auto text-center">
           <div className="eyebrow-dark inline-flex mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse-soft" />
-            AEGIS · GA Q3 2026 · Limited early access
+            Sirius AI GRC · GA Q3 2026 · Limited early access
           </div>
 
           <h2 className="font-display text-display-lg text-white mb-5">
@@ -24,14 +23,13 @@ export default function CTASection() {
 
           <p className="text-[16px] text-white/65 leading-relaxed mb-10 max-w-lg mx-auto">
             Book a 30-minute session with our enterprise team. We'll walk through
-            your AI governance gaps, map them to AEGIS capabilities, and scope
+            your AI governance gaps, map them to Sirius AI GRC capabilities, and scope
             a pilot — no deck, no fluff.
           </p>
 
-          {/* Primary CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
             <a
-              href="mailto:enterprise@sudheeksha.co.in?subject=AEGIS Demo Request"
+              href="mailto:enterprise@sudheeksha.co.in?subject=Sirius AI GRC Demo Request"
               className="btn h-12 px-6 bg-white text-ink hover:bg-white/90 shadow-elevated w-full sm:w-auto justify-center"
             >
               <Calendar size={16} />
@@ -46,7 +44,6 @@ export default function CTASection() {
             </a>
           </div>
 
-          {/* Trust signals */}
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {[
               { icon: Clock, text: 'Response within 1 business day' },
@@ -59,12 +56,11 @@ export default function CTASection() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        {/* Compliance strip */}
-        <div className="mt-16 pt-8 border-t border-white/[0.08]">
+        <Reveal delay={200} className="mt-16 pt-8 border-t border-white/[0.08]">
           <div className="mono-label !text-white/35 text-center mb-5">Compliance certifications</div>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-8">
             {['SOC 2 Type II', 'ISO 27001', 'HIPAA-ready', 'EU AI Act', 'GDPR', 'FedRAMP-ready'].map((badge) => (
               <div key={badge} className="flex items-center gap-1.5 text-[11.5px] font-semibold text-white/50">
                 <ShieldCheck size={12} className="text-teal-400/70" />
@@ -72,7 +68,7 @@ export default function CTASection() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

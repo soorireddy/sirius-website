@@ -1,4 +1,5 @@
 import { ShieldCheck, Zap, Users, TrendingUp, Quote } from 'lucide-react'
+import Reveal from './Reveal'
 
 const metrics = [
   { value: '99.97%', label: 'Policy compliance rate', sub: 'across all production runs', color: 'teal' },
@@ -29,20 +30,20 @@ const testimonials = [
 ]
 
 const colorMap = {
-  teal: { text: 'text-teal-400', bg: 'bg-teal-400/10', border: 'border-teal-400/20' },
-  violet: { text: 'text-violet-400', bg: 'bg-violet-400/10', border: 'border-violet-400/20' },
-  coral: { text: 'text-coral-400', bg: 'bg-coral-400/10', border: 'border-coral-400/20' },
+  teal:    { text: 'text-teal-400',    bg: 'bg-teal-400/10',    border: 'border-teal-400/20' },
+  violet:  { text: 'text-violet-400',  bg: 'bg-violet-400/10',  border: 'border-violet-400/20' },
+  coral:   { text: 'text-coral-400',   bg: 'bg-coral-400/10',   border: 'border-coral-400/20' },
   emerald: { text: 'text-emerald-400', bg: 'bg-emerald-400/10', border: 'border-emerald-400/20' },
 }
 
 export default function MetricsSection() {
   return (
-    <section className="relative bg-ink text-white py-24 border-t border-white/[0.06] overflow-hidden">
+    <section id="customers" className="relative bg-ink text-white py-24 border-t border-white/[0.06] overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-mesh-dark opacity-40" />
 
       <div className="container-wide">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <div className="eyebrow-dark inline-flex mb-4">
             <TrendingUp size={12} />
             Proven at enterprise scale
@@ -54,30 +55,28 @@ export default function MetricsSection() {
           <p className="text-[15px] text-white/55 max-w-lg mx-auto">
             Real production data from Fortune 500 deployments. Not benchmarks. Not labs.
           </p>
-        </div>
+        </Reveal>
 
         {/* Metrics grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
-          {metrics.map((m) => {
+          {metrics.map((m, i) => {
             const c = colorMap[m.color]
             return (
-              <div
-                key={m.label}
-                className={`rounded-2xl border ${c.border} ${c.bg} p-6 text-center`}
-              >
+              <Reveal key={m.label} delay={i * 80} className={`rounded-2xl border ${c.border} ${c.bg} p-6 text-center`}>
                 <div className={`text-4xl font-black tracking-tight mb-2 ${c.text}`}>{m.value}</div>
                 <div className="text-[13px] font-semibold text-white mb-1">{m.label}</div>
                 <div className="text-[11.5px] text-white/45">{m.sub}</div>
-              </div>
+              </Reveal>
             )
           })}
         </div>
 
         {/* Testimonials */}
-        <div className="grid lg:grid-cols-3 gap-5">
-          {testimonials.map((t) => (
-            <div
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {testimonials.map((t, i) => (
+            <Reveal
               key={t.name}
+              delay={i * 100}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 flex flex-col"
             >
               <Quote size={20} className="text-teal-400/50 mb-4 flex-shrink-0" />
@@ -92,13 +91,13 @@ export default function MetricsSection() {
                   {t.metric}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
         {/* Trust bar */}
-        <div className="mt-16 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
+        <Reveal delay={200} className="mt-16 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 text-center">
             {[
               { Icon: ShieldCheck, label: 'SOC 2 Type II, ISO 27001, HIPAA-ready, EU AI Act, GDPR' },
               { Icon: Zap, label: 'Private cloud, VPC, and on-prem deployment options' },
@@ -106,11 +105,11 @@ export default function MetricsSection() {
             ].map(({ Icon, label }) => (
               <div key={label} className="flex items-center justify-center gap-3">
                 <Icon size={16} className="text-teal-400 flex-shrink-0" />
-                <span className="text-[12.5px] text-white/60">{label}</span>
+                <span className="text-[12.5px] text-white/60 text-left">{label}</span>
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

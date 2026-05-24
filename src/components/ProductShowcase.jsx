@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { ShieldCheck, Workflow, Boxes, Plug, Code2, ArrowRight, CheckCircle2, Lock, BarChart3, Eye, AlertTriangle } from 'lucide-react'
+import Reveal from './Reveal'
 
 const products = [
   {
     id: 'aegis',
     Icon: ShieldCheck,
-    label: 'AEGIS',
-    sub: 'AI GRC',
+    label: 'AI GRC',
+    sub: 'Governance & Risk',
     accent: 'teal',
     title: 'AI governance, baked into every run.',
     lede: 'Policy engine, ABOM, evidence packs, HITL gates, and a control tower — all wired into the runtime, not bolted on after the fact.',
@@ -96,17 +97,17 @@ export default function ProductShowcase() {
     <section id="solutions" className="bg-cream py-24 sm:py-32 border-y border-line">
       <div className="container-wide">
         {/* Header */}
-        <div className="max-w-3xl mb-14">
+        <Reveal className="max-w-3xl mb-14">
           <div className="eyebrow eyebrow-dot">The Sirius Platform</div>
           <h2 className="mt-5 font-display text-display-lg text-ink">
             Five products. One governed runtime.
           </h2>
           <p className="mt-5 text-lg text-muted leading-relaxed">
-            AEGIS sits underneath everything else. Studio composes the agents.
+            Sirius AI GRC sits underneath everything else. Studio composes the agents.
             Builder draws the flows. Integration Studio reaches every system.
             Platform API exposes it all so your team can build on top.
           </p>
-        </div>
+        </Reveal>
 
         {/* Tab rail */}
         <div className="relative">
@@ -131,7 +132,7 @@ export default function ProductShowcase() {
                       <p.Icon size={14} />
                     </span>
                     <span className="text-[13px] font-semibold tracking-tight">{p.label}</span>
-                    <span className={`text-[10.5px] font-mono uppercase tracking-wider ${isActive ? 'text-white/55' : 'text-muted-soft'}`}>
+                    <span className={`hidden sm:inline text-[10.5px] font-mono uppercase tracking-wider ${isActive ? 'text-white/55' : 'text-muted-soft'}`}>
                       {p.sub}
                     </span>
                   </button>
@@ -235,23 +236,25 @@ function AegisMockup() {
         </div>
 
         {/* Table */}
-        <div className="rounded-lg border border-line overflow-hidden">
-          <div className="grid grid-cols-[88px_1fr_140px_110px_84px] bg-mist/60 px-3 h-9 items-center mono-label">
-            <span>ID</span><span>Policy</span><span>Scope</span><span>Severity</span><span className="text-right">Status</span>
-          </div>
-          <div>
-            {rows.map((r) => (
-              <div key={r.id} className="grid grid-cols-[88px_1fr_140px_110px_84px] px-3 h-12 items-center border-t border-line hover:bg-mist/40 transition-colors">
-                <span className="font-mono text-[11px] text-muted">{r.id}</span>
-                <div className="min-w-0 flex items-center gap-2">
-                  <Lock size={13} className="text-muted-soft flex-shrink-0" />
-                  <span className="text-[12.5px] font-medium text-ink truncate">{r.name}</span>
+        <div className="rounded-lg border border-line overflow-hidden overflow-x-auto">
+          <div className="min-w-[560px]">
+            <div className="grid grid-cols-[88px_1fr_140px_110px_84px] bg-mist/60 px-3 h-9 items-center mono-label">
+              <span>ID</span><span>Policy</span><span>Scope</span><span>Severity</span><span className="text-right">Status</span>
+            </div>
+            <div>
+              {rows.map((r) => (
+                <div key={r.id} className="grid grid-cols-[88px_1fr_140px_110px_84px] px-3 h-12 items-center border-t border-line hover:bg-mist/40 transition-colors">
+                  <span className="font-mono text-[11px] text-muted">{r.id}</span>
+                  <div className="min-w-0 flex items-center gap-2">
+                    <Lock size={13} className="text-muted-soft flex-shrink-0" />
+                    <span className="text-[12.5px] font-medium text-ink truncate">{r.name}</span>
+                  </div>
+                  <span className="font-mono text-[11px] text-muted">{r.scope}</span>
+                  <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase border w-fit ${sevColor[r.severity]}`}>{r.severity}</span>
+                  <span className="text-right text-[11px] font-semibold text-emerald-600">{r.status}</span>
                 </div>
-                <span className="font-mono text-[11px] text-muted">{r.scope}</span>
-                <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase border w-fit ${sevColor[r.severity]}`}>{r.severity}</span>
-                <span className="text-right text-[11px] font-semibold text-emerald-600">{r.status}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
@@ -274,8 +277,8 @@ function StudioMockup() {
     <MockShell title="ai-studio / agents / risk-assessor.v3" badge={
       <span className="text-[10.5px] font-mono text-muted">execution_mode: interactive</span>
     }>
-      <div className="grid grid-cols-[170px_1fr]">
-        <aside className="border-r border-line bg-mist/40 p-2.5 space-y-0.5 min-h-[420px]">
+      <div className="grid sm:grid-cols-[170px_1fr]">
+        <aside className="hidden sm:block border-r border-line bg-mist/40 p-2.5 space-y-0.5 min-h-[420px]">
           <div className="mono-label px-2 pb-2">Agent loop</div>
           {[
             { l: 'system prompt', phase: 'pre_prompt' },
@@ -461,8 +464,8 @@ function ApiMockup() {
     <MockShell title="platform-api · openapi 3.1" badge={
       <span className="text-[10.5px] font-mono text-muted">v1.0 · 142 endpoints</span>
     }>
-      <div className="grid grid-cols-[180px_1fr]">
-        <aside className="border-r border-line bg-mist/40 p-2.5 space-y-0.5 min-h-[420px]">
+      <div className="grid sm:grid-cols-[180px_1fr]">
+        <aside className="hidden sm:block border-r border-line bg-mist/40 p-2.5 space-y-0.5 min-h-[420px]">
           <div className="mono-label px-2 pb-2">Resources</div>
           {[
             { m: 'GET',  p: '/agents', active: true },

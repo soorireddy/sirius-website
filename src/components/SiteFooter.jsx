@@ -1,10 +1,11 @@
 import { ArrowRight, ShieldCheck, Github, Twitter, Linkedin } from 'lucide-react'
+import Reveal from './Reveal'
 
 const nav = [
   {
     heading: 'Product',
     links: [
-      { label: 'AEGIS Governance', href: '#aegis' },
+      { label: 'Sirius AI GRC', href: '#solutions' },
       { label: 'AI Studio', href: '#studio' },
       { label: 'Flow Builder', href: '#builder' },
       { label: 'Integration Studio', href: '#integrations' },
@@ -121,7 +122,7 @@ export default function SiteFooter() {
           </div>
 
           {/* Nav columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {nav.map((col) => (
               <div key={col.heading}>
                 <div className="text-[10.5px] font-bold uppercase tracking-wider text-white/35 mb-4">
