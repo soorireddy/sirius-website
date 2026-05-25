@@ -198,6 +198,7 @@ export default function AboutModal({ open, onClose }) {
           </div>
 
           {/* Advisors */}
+          {/*
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/25 bg-amber-500/10 text-[10.5px] font-bold uppercase tracking-wider text-amber-400 mb-5">
               Guided by GRC founders & advisors
@@ -221,7 +222,7 @@ export default function AboutModal({ open, onClose }) {
               ))}
             </div>
           </div>
-
+          */}
           {/* Values */}
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/25 bg-teal-500/10 text-[10.5px] font-bold uppercase tracking-wider text-teal-400 mb-5">
